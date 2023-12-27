@@ -6,30 +6,37 @@
 
 <form action="{% url "home:index" %}" method="post">
     {% csrf_token %}
-    <div class="container flex item-center justify-center ">
-        <div class="w-1/2 m-auto bg-white flex items-center border-b border-teal-500 py-2">
+    <div class="container flex gap-10 bg-red-200 p-28 my item-center justify-center flex-col">
+        <div class="w-1/2 m-auto  flex items-center border-b border-teal-500 py-2">
             <input
-                class="appearance-none bg-transparent w-full border-none text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                type="text" placeholder="Jane Doe" aria-label="Full name">
+                class="appearance-none rounded-xl bg-transparent w-full border-none text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                type="text" placeholder="Task Name" name="name" aria-label="Full name" required>
         </div>
-        <div class="w-1/2 m-auto bg-white flex items-center border-b border-teal-500 py-2">
+        <div class="flex item-center justify-center">
+            <textarea name="disc" id=""class="w-1/2 bg-transparent " required ></textarea>
+        </div>
+        <div class="w-1/2 m-auto  flex items-center border-b border-teal-500 py-2">
             <input
-                class="appearance-none bg-transparent w-full border-none text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                type="textarea" placeholder="Jane Doe" aria-label="Full name">
+                class="appearance-none rounded-xl bg-transparent w-full border-none text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                type="date" name="date"  aria-label="Full name">
         </div>
-        <div class="w-1/2 m-auto bg-white flex items-center border-b border-teal-500 py-2">
+        <div class="w-1/2 m-auto  flex items-center border-b border-teal-500 py-2">
             <input
-                class="appearance-none bg-transparent w-full border-none text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                type="date" placeholder="Jane Doe" aria-label="Full name">
+                class="appearance-none rounded-xl bg-transparent w-full border-none text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+                type="time" name="time" required aria-label="Full name">
         </div>
-        <div class="w-1/2 m-auto bg-white flex items-center border-b border-teal-500 py-2">
-            <input
-                class="appearance-none bg-transparent w-full border-none text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                type="time" placeholder="Jane Doe" aria-label="Full name">
-        </div>
+        <button type="submit">Add Task</button>
     </div>
 
 </form>
 
+<div>
+    {% for t in task %}
+<p>{{t.task_name}}
+    {{t.task_dis}}
+    {{t.remainder_time}}</p>
+    <a href="{% url "home:dlt" t.id %}"></a>
+    {% endfor %}
+</div>
 
 {% endblock body %}
