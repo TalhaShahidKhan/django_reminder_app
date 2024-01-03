@@ -1,14 +1,9 @@
 from celery import shared_task
 import time
+import datetime
 
 @shared_task
-def add(x, y):
-    time.sleep(5)
-    return x + y
-
-
-@shared_task
-def mul(x, y):
-    time.sleep(10)
-    return x * y
-
+def remine(date,time):
+    rem_date = datetime.date.fromisoformat(date)
+    rem_time = datetime.time.fromisoformat(time)
+    

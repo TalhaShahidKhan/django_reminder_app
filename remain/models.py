@@ -10,7 +10,7 @@ class Task(models.Model):
     remainder_time = models.TimeField()
     def save(self, *args, **kwargs):
         if not self.remainder_date:
-            self.remainder_date=datetime.datetime.now()
+            self.remainder_date=datetime.datetime.today()
         super(Task, self).save(*args, **kwargs)
 
 
