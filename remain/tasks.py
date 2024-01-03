@@ -3,7 +3,9 @@ import time
 import datetime
 
 @shared_task
-def remine(date,time):
-    rem_date = datetime.date.fromisoformat(date)
+def remine(time):
     rem_time = datetime.time.fromisoformat(time)
+    curr_time = datetime.datetime.now().strftime("%H:%M")
+    slp = rem_time - curr_time
+    print(slp)
     

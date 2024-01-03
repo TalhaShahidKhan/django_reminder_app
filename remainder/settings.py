@@ -127,7 +127,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-TIME_INPUT_FORMATS = ('%I:%M %p')
+# TIME_INPUT_FORMATS = ('%I:%M %p')
 DATE_INPUT_FORMATS = ["%m.%d.%Y"]
 USE_L10N = False
 # CELERY Settings 
