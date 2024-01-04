@@ -1,9 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect
 from .models import Task
-import datetime
-import time
+from .tasks import remine
 # Create your views here.
-
 def home_page(request):
     task_list = Task.objects.all()
     context = {
@@ -16,11 +14,11 @@ def home_page(request):
         time = request.POST.get('time')
         task = Task.objects.create(task_name=name,task_dis=disc,remainder_time=time)
         task.save()
-        rem_time = datetime.time.fromisoformat(time)
-        curr_time = datetime.datetime.time.
-        print(type(rem_time), type(curr_time))
-        slp = datetime.datetime.combine(datetime.datetime.now(), rem_time) - datetime.datetime.combine(datetime.datetime.now(),curr_time)
-        print(slp)
+        remine.delay(time,name)
+        
+        
+        
+
         
         
         
