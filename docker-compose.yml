@@ -1,0 +1,12 @@
+name: django_reminder_app
+
+
+
+services:
+  app:
+    image: reminder_app_image
+    container_name: reminder_app_container
+    ports:
+      - "8001:8000"
+    volumes:
+      - .:/app
